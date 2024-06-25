@@ -19,4 +19,10 @@ public class ArticleService {
     public Article getArticleById(long id) {
         return articleRepository.selectArticleById(id);
     }
+
+    public void registerArticle(Article article) {
+        articleRepository.insertArticle(article);
+    }
+
+
 }

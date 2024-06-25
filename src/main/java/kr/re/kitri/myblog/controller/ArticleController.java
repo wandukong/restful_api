@@ -18,11 +18,14 @@ public class ArticleController {
         return articleService.getArticleList();
     }
 
-    //@PostMapping("/api/articles")
-
     @GetMapping("/api/articles/{id}")
     public Article detailArticle(@PathVariable long id) {
         return articleService.getArticleById(id);
+    }
+
+    @PostMapping("/api/articles ")
+    public void registArticle(@RequestBody Article article) {
+        articleService.registerArticle(article);
     }
 
     //@PutMapping("/api/articles")

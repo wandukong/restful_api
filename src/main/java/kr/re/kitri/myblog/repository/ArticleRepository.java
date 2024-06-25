@@ -24,4 +24,8 @@ public class ArticleRepository {
     public Article selectArticleById(long id) {
         return new Article(id,"상세보기", "가나다라마", 33);
     }
+
+    public void insertArticle(Article article) {
+        System.out.println("article = " + article);
+    }
 }
