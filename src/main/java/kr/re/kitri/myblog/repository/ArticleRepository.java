@@ -25,7 +25,17 @@ public class ArticleRepository {
         return new Article(id,"상세보기", "가나다라마", 33);
     }
 
-    public void insertArticle(Article article) {
+    public Article insertArticle(Article article) {
         System.out.println("article = " + article);
+        return article;
+    }
+
+    public Article updateArticle(Article article) {
+        System.out.println("article = " + article + "수정");
+        return article;
+    }
+
+    public void deleteArticle(long id) {
+        System.out.println(id+" 글 삭제");
     }
 }

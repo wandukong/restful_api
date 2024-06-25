@@ -2,15 +2,16 @@ package kr.re.kitri.myblog.service;
 
 import kr.re.kitri.myblog.model.Article;
 import kr.re.kitri.myblog.repository.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+
 @Service
+@RequiredArgsConstructor
 public class ArticleService {
 
-    @Autowired
-    private ArticleRepository articleRepository;
+    private final ArticleRepository articleRepository;
 
     public List<Article> getArticleList() {
         return articleRepository.selectAllArticles();
@@ -20,9 +21,16 @@ public class ArticleService {
         return articleRepository.selectArticleById(id);
     }
 
-    public void registerArticle(Article article) {
-        articleRepository.insertArticle(article);
+    public Article registerArticle(Article article) {
+        return articleRepository.insertArticle(article);
     }
 
 
+    public Article modifyArticle(Article article) {
+        return articleRepository.updateArticle(article);
+    }
+
+    public void removeArticle(long id) {
+        articleRepository.deleteArticle(id);
+    }
 }
