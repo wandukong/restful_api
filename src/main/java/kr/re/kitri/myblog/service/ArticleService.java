@@ -1,26 +1,22 @@
 package kr.re.kitri.myblog.service;
 
 import kr.re.kitri.myblog.model.Article;
+import kr.re.kitri.myblog.repository.ArticleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ArticleService {
 
-    public List<Article> getArticleList() {
-        List<Article> articles = new ArrayList<>();
-        articles.add(new Article(1,"첫글", "반가워요", 0));
-        articles.add(new Article(2,"두번째 글", "하이", 25));
-        articles.add(new Article(3,"세번째 글", "ㅈㄱㄴ", 32));
-        articles.add(new Article(4,"네번째 글", "ㅎㅎㅎㅎㅎ", 74));
-        articles.add(new Article());
+    @Autowired
+    private ArticleRepository articleRepository;
 
-        return articles;
+    public List<Article> getArticleList() {
+        return articleRepository.selectAllArticles();
     }
 
     public Article getArticleById(long id) {
-        return new Article(id,"상세보기", "가나다라마", 33);
+        return articleRepository.selectArticleById(id);
     }
 }

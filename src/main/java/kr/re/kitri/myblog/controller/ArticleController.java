@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class ArticleController {
 
-    @Autowired
+    @Autowired // Dependency Injection
     private ArticleService articleService;
 
     @GetMapping("/api/articles")
