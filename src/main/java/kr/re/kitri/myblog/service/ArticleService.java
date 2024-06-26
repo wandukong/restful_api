@@ -1,5 +1,6 @@
 package kr.re.kitri.myblog.service;
 
+import jakarta.transaction.Transactional;
 import kr.re.kitri.myblog.model.Article;
 import kr.re.kitri.myblog.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,7 @@ public class ArticleService {
         articleRepository.deleteById(id);
     }
 
+    @Transactional
     public void increaseViewCount(long id) {
         articleRepository.increaseViewCount(id);
     }
