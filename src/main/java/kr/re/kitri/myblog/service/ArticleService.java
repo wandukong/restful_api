@@ -32,4 +32,8 @@ public class ArticleService {
     public void removeArticle(long id) {
         articleRepository.deleteById(id);
     }
+
+    public void increaseViewCount(long id) {
+        articleRepository.increaseViewCount(id);
+    }
 }

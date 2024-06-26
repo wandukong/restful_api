@@ -34,9 +34,15 @@ public class ArticleController {
         return ResponseEntity.ok().body(articleService.modifyArticle(article));
     }
 
-    @DeleteMapping("api/articles/{id}")
+    @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> removeArticle(@PathVariable long id) {
         articleService.removeArticle(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/api/articles/{id}/incrementViews")
+    public ResponseEntity<Void> increaseViewCount(@PathVariable long id) {
+        articleService.increaseViewCount(id);
+        return ResponseEntity.noContent().build();
     }
 }
