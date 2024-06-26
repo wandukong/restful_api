@@ -4,7 +4,7 @@ import kr.re.kitri.myblog.model.Article;
 import kr.re.kitri.myblog.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -13,24 +13,23 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-    public List<Article> getArticleList() {
-        return articleRepository.selectAllArticles();
+    public Iterable<Article> getArticleList() {
+        return articleRepository.findAll();
     }
 
-    public Article getArticleById(long id) {
-        return articleRepository.selectArticleById(id);
+    public Optional<Article> getArticleById(long id) {
+        return articleRepository.findById(id);
     }
 
     public Article registerArticle(Article article) {
-        return articleRepository.insertArticle(article);
+        return articleRepository.save(article);
     }
 
-
     public Article modifyArticle(Article article) {
-        return articleRepository.updateArticle(article);
+        return articleRepository.save(article);
     }
 
     public void removeArticle(long id) {
-        articleRepository.deleteArticle(id);
+        articleRepository.deleteById(id);
     }
 }

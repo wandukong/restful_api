@@ -6,24 +6,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 public class ArticleController {
 
-    // Dependency Injection
-    private final ArticleService articleService;
+    private final ArticleService articleService;     // Dependency Injection
 
     @GetMapping("/api/articles")
-    public ResponseEntity<List<Article>> getArticles() {
+    public ResponseEntity<Iterable<Article>> getArticles() {
         return ResponseEntity.ok().body(articleService.getArticleList());
     }
 
     @GetMapping("/api/articles/{id}")
-    public ResponseEntity<Article> detailArticle(@PathVariable long id) {
+    public ResponseEntity<Optional<Article>> detailArticle(@PathVariable long id) {
         return ResponseEntity.ok().body(articleService.getArticleById(id));
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ArticleRepository {
+public class ArticleRepository_old {
 
     public List<Article> selectAllArticles() {
 
